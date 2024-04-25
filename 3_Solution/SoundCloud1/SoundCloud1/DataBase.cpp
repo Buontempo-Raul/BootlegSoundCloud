@@ -1,4 +1,4 @@
-﻿#include"DataBase.h"
+#include"DataBase.h"
 
 DataBase* DataBase::m_instance = nullptr;
 
@@ -36,7 +36,14 @@ bool DataBase::connect()
     }
 
     // Connection string
-    SQLWCHAR connectionStr[] = L"DRIVER={SQL SERVER};SERVER=localhost, 12345;DATABASE=SoundCloud;Trusted_Connection=Yes;";
+
+    ///                                          <CUM SA CONECTEZI BAZA>
+    ///                             
+    ///                              SERVER = localhost, port(se face din setari in SQL)
+    ///                              DATABASE = numele bazei de date
+    
+
+    SQLWCHAR connectionStr[] = L"DRIVER={SQL SERVER};SERVER=localhost, 51222;DATABASE=Soundcloud_Database;Trusted_Connection=Yes;";
     // Connect to SQL Server
     std::cout << "waiting..\n";
 
