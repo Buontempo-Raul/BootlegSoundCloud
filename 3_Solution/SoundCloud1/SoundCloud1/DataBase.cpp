@@ -1,4 +1,4 @@
-﻿#include"DataBase.h"
+#include"DataBase.h"
 
 DataBase* DataBase::m_instance = nullptr;
 
@@ -36,7 +36,23 @@ bool DataBase::connect()
     }
 
     // Connection string
-    SQLWCHAR connectionStr[] = L"DRIVER={SQL SERVER};SERVER=localhost, 12345;DATABASE=SoundCloud;Trusted_Connection=Yes;";
+
+    ///                                          <CUM SA CONECTEZI BAZA>
+    ///                             
+    ///                              SERVER = localhost, port(se face din setari in SQL)
+    ///                              DATABASE = numele bazei de date
+    ///    Steps for SSMS
+    ///    1.Open the SQL server
+    ///    2.Right click on the Server -> properties -> Security -> Server authentication 
+    ///            -> select the 'SQL Server and Windows Authentication mode' bullet
+    ///    3.Right click on the Server -> restart (DONT CLOSE THE APP, LEAVE IT OPEN, YOU WILL NEED IT LATER)
+    ///    4.Open 'Sql Server Configuration Manager' -> SQL Server Network Configuration 
+    ///            -> Protocols for MSSQLSERVER -> click on 'TCP/IP' -> Enable -> 'Yes'
+    ///            -> IP Addresses -> scroll to the bottom -> on 'TCP Dynamic Ports' write 0 -> 'Apply'
+    ///            -> go back to the SQL Server and restart it once more -> go again to the 'TCP Dynamic Ports' 
+    ///            -> now where you wrote 0 should be the port number
+
+    SQLWCHAR connectionStr[] = L"DRIVER={SQL SERVER};SERVER=localhost, 51222;DATABASE=Soundcloud_Database;Trusted_Connection=Yes;";
     // Connect to SQL Server
     std::cout << "waiting..\n";
 

@@ -1,4 +1,3 @@
-
 #include "TCPServer.h"
 #define _CRT_SECURE_NO_WARNINGS
 #define WIN32_LEAN_AND_MEAN
@@ -115,6 +114,7 @@ void TCPServer::handleClient(int clientSocket) {
 	// Handle client request
 	char buffer[1024];
 
+	
 	while (true)
 	{
 		std::cout << "(Asteapta interactiune de la client...)\n";
@@ -129,18 +129,16 @@ void TCPServer::handleClient(int clientSocket) {
 		}
 		else {
 			buffer[bytesReceived] = '\0'; // Null-terminate the received data
-			printf("Acesta este mesajul:%s\n", buffer);
+			printf("%s\n", buffer);
 
 
 			if (DataBase::getInstance().connect())
 			{
 				printf("Conectat la baza de date!\n");
-				exit(-1);
 			}
 			else
 			{
 				printf("Nu se poate realiza conexiunea cu baza de date!\n");
-				exit(-1);
 			}
 
 			DataBase::getInstance().disconnect();
@@ -156,3 +154,4 @@ void TCPServer::handleClient(int clientSocket) {
 	// Close client socket
 	closesocket(clientSocket);
 }
+
