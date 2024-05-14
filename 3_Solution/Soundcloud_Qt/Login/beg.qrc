@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/beg">
+        <file>beg.qrc</file>
+        <file>Logo.png</file>
+        <file>b1.jpeg</file>
+        <file>b2.jpeg</file>
+        <file>b3.jpeg</file>
+        <file>home.png</file>
+        <file>search.png</file>
+        <file>play.png</file>
+        <file>pause.png</file>
+        <file>back.png</file>
+        <file>next.png</file>
+        <file>volume.png</file>
+        <file>mute.png</file>
+        <file>playlist.png</file>
+    </qresource>
+</RCC>

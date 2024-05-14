@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>menu</class>
+ <widget class="QDialog" name="menu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1112</width>
+    <height>693</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(71, 71, 71);
+</string>
+  </property>
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>30</y>
+     <width>831</width>
+     <height>551</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(85, 170, 255);
+border-radius:20px;</string>
+   </property>
+   <property name="currentIndex">
+    <number>5</number>
+   </property>
+   <widget class="QWidget" name="stackedWidgetPage1">
+    <widget class="QPushButton" name="pushButton_4">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>20</y>
+       <width>83</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid black;
+color: black;
+}</string>
+     </property>
+     <property name="text">
+      <string>All</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_5">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>20</y>
+       <width>83</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid black;
+color: black;
+}</string>
+     </property>
+     <property name="text">
+      <string>Music</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_6">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>20</y>
+       <width>83</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid black;
+color: black;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Podcast</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_4"/>
+   <widget class="QWidget" name="page_5"/>
+   <widget class="QWidget" name="page"/>
+   <widget class="QWidget" name="page_2"/>
+   <widget class="QWidget" name="page_3">
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>40</y>
+       <width>371</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+font-size: 15px;
+border-radius: 25px;
+background-color: transparent;
+border: 2px transparent;
+color: black;
+}
+</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="searchBar">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>38</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid transparent;
+color: black;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="beg.qrc">
+       <normaloff>:/beg/search.png</normaloff>:/beg/search.png</iconset>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="searchWidgetList">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>90</y>
+       <width>461</width>
+       <height>371</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>30</y>
+       <width>441</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+font-size: 15px;
+border-radius: 25px;
+background-color: transparent;
+border: 2px solid black;
+color: black;
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <zorder>label_2</zorder>
+    <zorder>lineEdit</zorder>
+    <zorder>searchBar</zorder>
+    <zorder>searchWidgetList</zorder>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>30</y>
+     <width>221</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(85, 170, 255);
+border-radius:15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QScrollArea" name="scrollArea">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>110</y>
+     <width>221</width>
+     <height>471</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(85, 170, 255);
+</string>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="scrollAreaWidgetContents">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>219</width>
+      <height>469</height>
+     </rect>
+    </property>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>91</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid transparent;
+color: black;
+}</string>
+     </property>
+     <property name="text">
+      <string>  Library</string>
+     </property>
+     <property name="icon">
+      <iconset resource="beg.qrc">
+       <normaloff>:/beg/playlist.png</normaloff>:/beg/playlist.png</iconset>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>30</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid transparent;
+color: black;
+}</string>
+   </property>
+   <property name="text">
+    <string>    Home</string>
+   </property>
+   <property name="icon">
+    <iconset resource="beg.qrc">
+     <normaloff>:/beg/home.png</normaloff>:/beg/home.png</iconset>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>70</y>
+     <width>111</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid transparent;
+color: black;
+}</string>
+   </property>
+   <property name="text">
+    <string>    Search</string>
+   </property>
+   <property name="icon">
+    <iconset resource="beg.qrc">
+     <normaloff>:/beg/search.png</normaloff>:/beg/search.png</iconset>
+   </property>
+  </widget>
+  <widget class="QWidget" name="MusicPlayer" native="true">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>590</y>
+     <width>1061</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(85, 170, 255);
+border-radius:15px;</string>
+   </property>
+   <widget class="QPushButton" name="playStop">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>10</y>
+      <width>61</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>61</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid transparent;
+color: black;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="beg.qrc">
+      <normaloff>:/beg/play.png</normaloff>
+      <normalon>:/beg/pause.png</normalon>:/beg/play.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="next">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>10</y>
+      <width>83</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid transparent;
+color: black;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="beg.qrc">
+      <normaloff>:/beg/next.png</normaloff>:/beg/next.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="back">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>10</y>
+      <width>83</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid transparent;
+color: black;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="beg.qrc">
+      <normaloff>:/beg/back.png</normaloff>:/beg/back.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QSlider" name="horizontalSlider">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>50</y>
+      <width>481</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QSlider::handle:horizontal {
+    width: 0px; 
+    margin: -5px -5px; 
+    border: none;
+}
+
+QSlider::groove:horizontal {
+    height: 5px; 
+    margin: 3px 0; /* Ajustează marginile pentru a păstra o distanță */
+    border-radius: 4px; /* Redu border-radius-ul pentru a păstra o distanță */
+    background: transparent; 
+    border: 2px solid black;
+}
+
+QSlider::sub-page:horizontal {
+    background: grey; /* Culoarea indicării progresului */
+    border-radius: 4px; /* Redu border-radius-ul pentru a păstra o distanță */
+    height: 4px; /* Ajustează înălțimea */
+    margin: 5px 3px; /* Ajustează marginile pentru a păstra o distanță */
+}
+</string>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="volume">
+    <property name="geometry">
+     <rect>
+      <x>920</x>
+      <y>20</y>
+      <width>121</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QSlider::handle:horizontal {
+    width: 0px; 
+    margin: -5px -5px; 
+    border: none;
+}
+
+QSlider::groove:horizontal {
+    height: 5px; 
+    margin: 3px 0; /* Ajustează marginile pentru a păstra o distanță */
+    border-radius: 4px; /* Redu border-radius-ul pentru a păstra o distanță */
+    background: transparent; 
+    border: 2px solid black;
+}
+
+QSlider::sub-page:horizontal {
+    background: grey; /* Culoarea indicării progresului */
+    border-radius: 4px; /* Redu border-radius-ul pentru a păstra o distanță */
+    height: 4px; /* Ajustează înălțimea */
+    margin: 5px 3px; /* Ajustează marginile pentru a păstra o distanță */
+}
+</string>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="mute">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>30</y>
+      <width>31</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid transparent;
+color: black;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="beg.qrc">
+      <normaloff>:/beg/volume.png</normaloff>
+      <normalon>:/beg/mute.png</normalon>:/beg/volume.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+    <property name="autoRepeat">
+     <bool>false</bool>
+    </property>
+   </widget>
+  </widget>
+  <zorder>MusicPlayer</zorder>
+  <zorder>scrollArea</zorder>
+  <zorder>label</zorder>
+  <zorder>stackedWidget</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>pushButton_2</zorder>
+ </widget>
+ <resources>
+  <include location="beg.qrc"/>
+  <include location="beg.qrc"/>
+ </resources>
+ <connections/>
+</ui>
