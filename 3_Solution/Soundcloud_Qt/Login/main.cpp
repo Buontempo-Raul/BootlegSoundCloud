@@ -24,7 +24,8 @@ int main(int argc, char *argv[]) {
 
     // Close the splash screen
     splash.close();
-  //  TCPClient::getInstance().start("localhost",12345);
+    QString id="172.20.10.13";
+    TCPClient::getInstance().start(id,12345);
     // menu Menu;
     // Menu.show();
     //Show login/sign-up window

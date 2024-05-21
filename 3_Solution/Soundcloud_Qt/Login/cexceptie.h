@@ -14,7 +14,7 @@ public:
     void NotAbleToConnect();
     void WaitedforToMuchTime();
     void DisableConnection();
-    void WrongCity();
+    void Wrong();
     void crashApp();
 
 

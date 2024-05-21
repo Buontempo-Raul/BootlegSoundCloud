@@ -116,7 +116,7 @@ border: 2px solid black
 }</string>
     </property>
     <property name="echoMode">
-     <enum>QLineEdit::PasswordEchoOnEdit</enum>
+     <enum>QLineEdit::Password</enum>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">

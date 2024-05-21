@@ -14,5 +14,9 @@
         <file>volume.png</file>
         <file>mute.png</file>
         <file>playlist.png</file>
+        <file>upload.png</file>
+        <file>user.png</file>
+        <file>user-profile.png</file>
+        <file>user (1).png</file>
     </qresource>
 </RCC>

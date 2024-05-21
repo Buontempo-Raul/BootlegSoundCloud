@@ -1,10 +1,16 @@
 #include "menu.h"
 #include "ui_menu.h"
 #include<QMessageBox>
+#include<getmusic.h>
+#include"cexceptie.h"
+#include"requestmusic.h"
+#include <QVBoxLayout>
+#include"songwidget.h"
 
-menu::menu(QWidget *parent)
+menu::menu(QWidget *parent,const getmusic& MusicData)
     : QDialog(parent)
     , ui(new Ui::menu)
+    ,music(new getmusic(MusicData))
 {
     ui->setupUi(this);
     mediaPlayer = new QMediaPlayer(this);
@@ -20,13 +26,31 @@ menu::menu(QWidget *parent)
     connect(ui->mute, &QPushButton::clicked, this, &menu::on_mute_clicked);
     connect(ui->searchBar,&QPushButton::clicked, this, &menu::on_searchBar_clicked);
 
-
-
+    ui->groupBox->setVisible(false);
+    ui->searchLineEdit->setPlaceholderText("Search Music");
+   // populateSongList();
 }
 
 menu::~menu()
 {
     delete ui;
+}
+
+void menu::populateSongList()
+{
+
+    // Adaugă noi melodii
+    for (size_t i = 0; i < music->song_name().size(); ++i) {
+        SongWidget *songWidget = new SongWidget(music->song_name()[i], music->thumbnails()[i], music->url()[i], this);
+        connect(songWidget, &SongWidget::clicked, this, &menu::onSongWidgetClicked);
+        ui->searchWidgetList->layout()->addWidget(songWidget);
+    }
+}
+
+void menu::onSongWidgetClicked(const QString &url)
+{
+    mediaPlayer->setMedia(QUrl(url));
+    mediaPlayer->play();
 }
 
 void menu::on_pushButton_clicked()
@@ -102,6 +126,38 @@ void menu::on_mute_clicked()
 
 void menu::on_searchBar_clicked()
 {
+    QString searchBar = ui->searchLineEdit->text();
 
+    if(searchBar==' '){
+        cexceptie exc;
+        exc.Wrong();
+    }
+
+
+    requestmusic req(searchBar);
+
+    if (req._request()) {
+        this->hide();
+        if (music) {
+            delete music;
+            music = nullptr;
+        }
+
+        getmusic MusicData = requestmusic::MusicData;
+        // Re-populate the list with new music data
+        music = new getmusic(MusicData);
+        populateSongList();
+    } else {
+        cexceptie exc;
+        exc.Wrong();
+    }
+
+
+}
+
+
+void menu::on_pushButton_17_clicked()
+{
+    ui->groupBox->setVisible(!ui->groupBox->isVisible());
 }
 

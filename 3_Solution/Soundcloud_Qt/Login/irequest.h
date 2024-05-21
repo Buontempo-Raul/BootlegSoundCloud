@@ -3,6 +3,7 @@
 
 #include<QString>
 #include"tcpclient.h"
+#include"getmusic.h"
 
 
 class IRequest

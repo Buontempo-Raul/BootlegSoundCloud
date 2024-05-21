@@ -17,7 +17,7 @@ bool requestLogin::_request()
         return false;
     }
 
-    if(data!="NOK"){
+    if(data!="false"){
         QString copy=data;
         QString part = copy.split('#', Qt::SkipEmptyParts).at(0);
         return true;

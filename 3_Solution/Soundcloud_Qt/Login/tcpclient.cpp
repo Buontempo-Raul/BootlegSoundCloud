@@ -3,6 +3,11 @@
 #include "QDebug"
 #include "QMessageBox"
 #include "QStringList"
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonValue>
+
 
 TCPClient* TCPClient::instance = nullptr;
 QString TCPClient::clientUsername;
@@ -22,38 +27,12 @@ QString TCPClient::readyRead()
     message = socket->readAll();
     TCPClient::readFlag = true;//setez flagul ca am primit informatii noi
     TCPClient::readString = QString(message);//le actualizez
-    QStringList toks=QString(message).split('/');
+    QStringList toks=QString(message).split('#');
     return QString(message);
 }
 
 
-// void TCPClient::sendLogin(const QString &username, const QString &password) {
-//     QByteArray data = QString("0#%1#%2").arg(username, password).toUtf8();
-//     socket->write(data);
-// }
 
-// void TCPClient::sendSignUp(const QString &username, const QString &password, const QString &email) {
-//     QByteArray data = QString("1#%1#%2#%3").arg(email,username, password).toUtf8();
-//     socket->write(data);
-// }
-
-// void TCPClient::sendSearch(const QString &searchText) {
-//     if (socket && socket->state() == QAbstractSocket::ConnectedState) {
-//         QByteArray data = QString("2#%1").arg(searchText).toUtf8();
-//         socket->write(data);
-//         socket->flush(); // Pentru a asigura trimiterea imediată a datelor
-//     } else {
-//         qDebug() << "Client is not connected to the server.";
-//     }
-// }
-
-
-// QAbstractSocket::SocketState TCPClient::getState() const {
-//     if (socket)
-//         return socket->state();
-//     else
-//         return QAbstractSocket::UnconnectedState;
-// }
 void TCPClient::start(QString ip, unsigned short port)
 {
     //primestre adresa IP si portul serverului si initiaza conexiunea
@@ -101,6 +80,42 @@ QString TCPClient::getData(QString requestMessage)
 
     qDebug() << "answer message: " << msg;
     return msg;
+}
+
+QStringList TCPClient::getSongData(const QString &requestMessage)
+{
+    QStringList songDataList;
+
+    // Trimite cererea la server
+    QString response = getData(requestMessage);
+
+    // Parsează răspunsul JSON
+    QJsonDocument jsonResponse = QJsonDocument::fromJson(response.toUtf8());
+    if (!jsonResponse.isNull() && jsonResponse.isArray()) {
+        QJsonArray songsArray = jsonResponse.array();
+        for (const QJsonValue &songValue : songsArray) {
+            if (songValue.isObject()) {
+                QJsonObject songObject = songValue.toObject();
+                // Extrage URL-ul melodiei
+                if (songObject.contains("url") && songObject["url"].isString()) {
+                    QString url = songObject["url"].toString();
+                    songDataList.append(url);
+                }
+                // Extrage numele melodiei
+                if (songObject.contains("name") && songObject["name"].isString()) {
+                    QString name = songObject["name"].toString();
+                    songDataList.append(name);
+                }
+                // Extrage thumbnail-ul melodiei
+                if (songObject.contains("thumb") && songObject["thumb"].isString()) {
+                    QString thumb = songObject["thumb"].toString();
+                    songDataList.append(thumb);
+                }
+            }
+        }
+    }
+
+    return songDataList;
 }
 
 void TCPClient::stop()

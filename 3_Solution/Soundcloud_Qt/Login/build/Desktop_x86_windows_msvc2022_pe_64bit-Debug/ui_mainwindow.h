@@ -90,7 +90,7 @@ public:
 "background-color: transparent;\n"
 "border: 2px solid black\n"
 "}"));
-        lineEdit_2->setEchoMode(QLineEdit::PasswordEchoOnEdit);
+        lineEdit_2->setEchoMode(QLineEdit::Password);
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(490, 400, 141, 29));

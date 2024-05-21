@@ -13,6 +13,7 @@ CONFIG += c++17
 SOURCES += \
     cexceptie.cpp \
     cuser.cpp \
+    getmusic.cpp \
     iexceptie.cpp \
     irequest.cpp \
     iuser.cpp \
@@ -21,13 +22,16 @@ SOURCES += \
     menu.cpp \
     normaluser.cpp \
     requestlogin.cpp \
+    requestmusic.cpp \
     requestsignup.cpp \
     signup.cpp \
+    songwidget.cpp \
     tcpclient.cpp
 
 HEADERS += \
     cexceptie.h \
     cuser.h \
+    getmusic.h \
     iexceptie.h \
     irequest.h \
     iuser.h \
@@ -35,8 +39,10 @@ HEADERS += \
     menu.h \
     normaluser.h \
     requestlogin.h \
+    requestmusic.h \
     requestsignup.h \
     signup.h \
+    songwidget.h \
     tcpclient.h
 
 FORMS += \
@@ -51,5 +57,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     beg.qrc \
-    beg.qrc \
-    bg.qrc
+    beg.qrc

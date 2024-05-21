@@ -102,12 +102,148 @@ color: black;
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="page_4"/>
-   <widget class="QWidget" name="page_5"/>
+   <widget class="QWidget" name="page_4">
+    <widget class="QPushButton" name="pushButton_7">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>20</y>
+       <width>83</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid black;
+color: black;
+}</string>
+     </property>
+     <property name="text">
+      <string>All</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_12">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>20</y>
+       <width>83</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid black;
+color: black;
+}</string>
+     </property>
+     <property name="text">
+      <string>Music</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_13">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>20</y>
+       <width>83</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid black;
+color: black;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Podcast</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_5">
+    <widget class="QPushButton" name="pushButton_14">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>20</y>
+       <width>83</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid black;
+color: black;
+}</string>
+     </property>
+     <property name="text">
+      <string>All</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_15">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>20</y>
+       <width>83</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid black;
+color: black;
+}</string>
+     </property>
+     <property name="text">
+      <string>Music</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_16">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>20</y>
+       <width>83</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid black;
+color: black;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Podcast</string>
+     </property>
+    </widget>
+   </widget>
    <widget class="QWidget" name="page"/>
    <widget class="QWidget" name="page_2"/>
    <widget class="QWidget" name="page_3">
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="searchLineEdit">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -156,11 +292,15 @@ color: black;
     <widget class="QListWidget" name="searchWidgetList">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>80</x>
        <y>90</y>
-       <width>461</width>
+       <width>421</width>
        <height>371</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(85, 170, 255);
+border-radius:15px;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_2">
@@ -187,7 +327,7 @@ color: black;
      </property>
     </widget>
     <zorder>label_2</zorder>
-    <zorder>lineEdit</zorder>
+    <zorder>searchLineEdit</zorder>
     <zorder>searchBar</zorder>
     <zorder>searchWidgetList</zorder>
    </widget>
@@ -198,7 +338,7 @@ color: black;
      <x>20</x>
      <y>30</y>
      <width>221</width>
-     <height>71</height>
+     <height>121</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -213,9 +353,9 @@ border-radius:15px;</string>
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>110</y>
+     <y>160</y>
      <width>221</width>
-     <height>471</height>
+     <height>421</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -231,7 +371,7 @@ border-radius:15px;</string>
       <x>0</x>
       <y>0</y>
       <width>219</width>
-      <height>469</height>
+      <height>419</height>
      </rect>
     </property>
     <widget class="QPushButton" name="pushButton_3">
@@ -259,6 +399,88 @@ color: black;
       <iconset resource="beg.qrc">
        <normaloff>:/beg/playlist.png</normaloff>:/beg/playlist.png</iconset>
      </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>221</width>
+       <height>421</height>
+      </rect>
+     </property>
+     <property name="tabletTracking">
+      <bool>false</bool>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QGroupBox::title {
+     color: black;
+     padding: 5px 10px; 
+     subcontrol-origin: margin;
+      subcontrol-position: top left;
+        }</string>
+     </property>
+     <property name="title">
+      <string>Settings</string>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <widget class="QPushButton" name="pushButton_8">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>30</y>
+        <width>91</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid transparent;
+color: black;
+}</string>
+      </property>
+      <property name="text">
+       <string>  Upload</string>
+      </property>
+      <property name="icon">
+       <iconset resource="beg.qrc">
+        <normaloff>:/beg/upload.png</normaloff>:/beg/upload.png</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_9">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>70</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid transparent;
+color: black;
+}</string>
+      </property>
+      <property name="text">
+       <string>   Delete account</string>
+      </property>
+      <property name="icon">
+       <iconset resource="beg.qrc">
+        <normaloff>:/beg/user (1).png</normaloff>:/beg/user (1).png</iconset>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -557,12 +779,39 @@ color: black;
     </property>
    </widget>
   </widget>
+  <widget class="QPushButton" name="pushButton_17">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>110</y>
+     <width>101</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+font-size: 15px;
+border-radius: 10px;
+background-color: transparent;
+border: 2px solid transparent;
+color: black;
+}</string>
+   </property>
+   <property name="text">
+    <string>    Settings</string>
+   </property>
+   <property name="icon">
+    <iconset resource="beg.qrc">
+     <normaloff>:/beg/user-profile.png</normaloff>:/beg/user-profile.png</iconset>
+   </property>
+  </widget>
+  <zorder>stackedWidget</zorder>
   <zorder>MusicPlayer</zorder>
   <zorder>scrollArea</zorder>
   <zorder>label</zorder>
-  <zorder>stackedWidget</zorder>
   <zorder>pushButton</zorder>
   <zorder>pushButton_2</zorder>
+  <zorder>pushButton_17</zorder>
  </widget>
  <resources>
   <include location="beg.qrc"/>

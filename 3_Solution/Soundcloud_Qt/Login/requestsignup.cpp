@@ -10,12 +10,11 @@ requestSignup::requestSignup(QString user,QString pass,QString Email)
     //username,password,email
     creds.append(unu);
     creds.append(diez);
+    creds.append(Email);
+    creds.append(diez);
     creds.append(user);
     creds.append(diez);
     creds.append(pass);
-    creds.append(diez);
-    creds.append(Email);
-    creds.append(diez);
 }
 
 bool requestSignup::_request()
@@ -24,7 +23,7 @@ bool requestSignup::_request()
     // 2#username#pass#...
     QString data=TCPClient::getInstance().getData(creds);
 
-    if(data!="NOK"){
+    if(data!="false"){
         return true;
     }
     /*else{

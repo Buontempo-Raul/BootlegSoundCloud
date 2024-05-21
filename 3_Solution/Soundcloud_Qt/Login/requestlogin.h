@@ -9,7 +9,7 @@ protected:
     QString creds;
 public:
     requestLogin(QString credentials);
-    ~requestLogin(){};
+    ~requestLogin(){}
     bool _request();
 };
 

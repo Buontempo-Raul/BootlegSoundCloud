@@ -12,7 +12,7 @@ public:
     virtual void NotAbleToConnect()=0;
     virtual void WaitedforToMuchTime()=0;
     virtual void DisableConnection()=0;
-    virtual void WrongCity()=0;
+    virtual void Wrong()=0;
 
 
 };

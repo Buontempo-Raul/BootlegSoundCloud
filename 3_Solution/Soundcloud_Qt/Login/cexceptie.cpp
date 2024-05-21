@@ -36,9 +36,9 @@ void cexceptie::DisableConnection()
     QMessageBox::information(0,"End","The session was closed.");
 }
 
-void cexceptie::WrongCity()
+void cexceptie::Wrong()
 {
-    QMessageBox::information(0,"Ups!","Wrong city name. Try again!");
+    QMessageBox::information(0,"Ups!","No results. Try again!");
 }
 
 void cexceptie::crashApp()

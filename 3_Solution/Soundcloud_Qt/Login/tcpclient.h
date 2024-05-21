@@ -3,14 +3,13 @@
 
 #include <QObject>
 
+
 class QTcpSocket;
 
 class TCPClient : public QObject {
     Q_OBJECT
 
 public:
-    // explicit TCPClient(QObject *parent = nullptr);
-    // QAbstractSocket::SocketState getState() const;
     static TCPClient& getInstance();
     static void destroyInstance();
 
@@ -18,6 +17,7 @@ public:
     void stop();//inchide conexiunea cu serverul
 
     QString getData(QString requestMessage);//primeste mesajul de cerere si returneaza raspunsul de la server
+    QStringList getSongData(const QString &requestMessage);
 
     //aici setez username-ul curent
     static void setUsername(QString str) { TCPClient::clientUsername = str; }
@@ -25,15 +25,10 @@ public:
 signals:
     void realtimemessage(QString message);
 
-// public slots:
-//     void connectToServer(const QString &host, quint16 port);
-//     void sendLogin(const QString &username, const QString &password);
-//     void sendSignUp(const QString &username, const QString &password, const QString &email);
-//     void sendSearch(const QString &search);
+
 
 private slots:
-    // void connected();
-    // void readyRead();
+
     QString readyRead();//activat cand exista date disponibile pentru citire de la server
 
 private:

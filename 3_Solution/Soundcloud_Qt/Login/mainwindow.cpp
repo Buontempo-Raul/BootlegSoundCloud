@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
    // connect(ui->pushButton, SIGNAL(clicked()),this,SLOT(button()));
     connect(ui->SignUp, SIGNAL(linkActivated(QString)), this, SLOT(openSignUpWindow()));
+    ui->lineEdit->setPlaceholderText("Ex:ursu112");
 }
 
 MainWindow::~MainWindow()
@@ -47,7 +48,9 @@ void MainWindow::on_pushButton_clicked()
         QMessageBox::information(this, "LogIn", "Username and password is correct");
         this->hide();
 
-        menu Menu;
+        menu Menu(nullptr);
+        Menu.setModal(true);
+        Menu.show();
         Menu.exec();
     }
     else{

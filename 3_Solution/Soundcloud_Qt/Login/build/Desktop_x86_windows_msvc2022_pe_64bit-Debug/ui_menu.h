@@ -13,6 +13,7 @@
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListWidget>
@@ -33,11 +34,17 @@ public:
     QPushButton *pushButton_5;
     QPushButton *pushButton_6;
     QWidget *page_4;
+    QPushButton *pushButton_7;
+    QPushButton *pushButton_12;
+    QPushButton *pushButton_13;
     QWidget *page_5;
+    QPushButton *pushButton_14;
+    QPushButton *pushButton_15;
+    QPushButton *pushButton_16;
     QWidget *page;
     QWidget *page_2;
     QWidget *page_3;
-    QLineEdit *lineEdit;
+    QLineEdit *searchLineEdit;
     QPushButton *searchBar;
     QListWidget *searchWidgetList;
     QLabel *label_2;
@@ -45,6 +52,9 @@ public:
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QPushButton *pushButton_3;
+    QGroupBox *groupBox;
+    QPushButton *pushButton_8;
+    QPushButton *pushButton_9;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
     QWidget *MusicPlayer;
@@ -54,6 +64,7 @@ public:
     QSlider *horizontalSlider;
     QSlider *volume;
     QPushButton *mute;
+    QPushButton *pushButton_17;
 
     void setupUi(QDialog *menu)
     {
@@ -103,9 +114,71 @@ public:
         stackedWidget->addWidget(stackedWidgetPage1);
         page_4 = new QWidget();
         page_4->setObjectName(QString::fromUtf8("page_4"));
+        pushButton_7 = new QPushButton(page_4);
+        pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
+        pushButton_7->setGeometry(QRect(30, 20, 83, 29));
+        pushButton_7->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"font-size: 15px;\n"
+"border-radius: 10px;\n"
+"background-color: transparent;\n"
+"border: 2px solid black;\n"
+"color: black;\n"
+"}"));
+        pushButton_12 = new QPushButton(page_4);
+        pushButton_12->setObjectName(QString::fromUtf8("pushButton_12"));
+        pushButton_12->setGeometry(QRect(160, 20, 83, 29));
+        pushButton_12->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"font-size: 15px;\n"
+"border-radius: 10px;\n"
+"background-color: transparent;\n"
+"border: 2px solid black;\n"
+"color: black;\n"
+"}"));
+        pushButton_13 = new QPushButton(page_4);
+        pushButton_13->setObjectName(QString::fromUtf8("pushButton_13"));
+        pushButton_13->setGeometry(QRect(290, 20, 83, 29));
+        pushButton_13->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"font-size: 15px;\n"
+"border-radius: 10px;\n"
+"background-color: transparent;\n"
+"border: 2px solid black;\n"
+"color: black;\n"
+"}\n"
+""));
         stackedWidget->addWidget(page_4);
         page_5 = new QWidget();
         page_5->setObjectName(QString::fromUtf8("page_5"));
+        pushButton_14 = new QPushButton(page_5);
+        pushButton_14->setObjectName(QString::fromUtf8("pushButton_14"));
+        pushButton_14->setGeometry(QRect(30, 20, 83, 29));
+        pushButton_14->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"font-size: 15px;\n"
+"border-radius: 10px;\n"
+"background-color: transparent;\n"
+"border: 2px solid black;\n"
+"color: black;\n"
+"}"));
+        pushButton_15 = new QPushButton(page_5);
+        pushButton_15->setObjectName(QString::fromUtf8("pushButton_15"));
+        pushButton_15->setGeometry(QRect(160, 20, 83, 29));
+        pushButton_15->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"font-size: 15px;\n"
+"border-radius: 10px;\n"
+"background-color: transparent;\n"
+"border: 2px solid black;\n"
+"color: black;\n"
+"}"));
+        pushButton_16 = new QPushButton(page_5);
+        pushButton_16->setObjectName(QString::fromUtf8("pushButton_16"));
+        pushButton_16->setGeometry(QRect(290, 20, 83, 29));
+        pushButton_16->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"font-size: 15px;\n"
+"border-radius: 10px;\n"
+"background-color: transparent;\n"
+"border: 2px solid black;\n"
+"color: black;\n"
+"}\n"
+""));
         stackedWidget->addWidget(page_5);
         page = new QWidget();
         page->setObjectName(QString::fromUtf8("page"));
@@ -115,10 +188,10 @@ public:
         stackedWidget->addWidget(page_2);
         page_3 = new QWidget();
         page_3->setObjectName(QString::fromUtf8("page_3"));
-        lineEdit = new QLineEdit(page_3);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setGeometry(QRect(110, 40, 371, 31));
-        lineEdit->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
+        searchLineEdit = new QLineEdit(page_3);
+        searchLineEdit->setObjectName(QString::fromUtf8("searchLineEdit"));
+        searchLineEdit->setGeometry(QRect(110, 40, 371, 31));
+        searchLineEdit->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
 "font-size: 15px;\n"
 "border-radius: 25px;\n"
 "background-color: transparent;\n"
@@ -141,7 +214,9 @@ public:
         searchBar->setIcon(icon);
         searchWidgetList = new QListWidget(page_3);
         searchWidgetList->setObjectName(QString::fromUtf8("searchWidgetList"));
-        searchWidgetList->setGeometry(QRect(60, 90, 461, 371));
+        searchWidgetList->setGeometry(QRect(80, 90, 421, 371));
+        searchWidgetList->setStyleSheet(QString::fromUtf8("background-color: rgb(85, 170, 255);\n"
+"border-radius:15px;"));
         label_2 = new QLabel(page_3);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(70, 30, 441, 51));
@@ -155,23 +230,23 @@ public:
 ""));
         stackedWidget->addWidget(page_3);
         label_2->raise();
-        lineEdit->raise();
+        searchLineEdit->raise();
         searchBar->raise();
         searchWidgetList->raise();
         label = new QLabel(menu);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(20, 30, 221, 71));
+        label->setGeometry(QRect(20, 30, 221, 121));
         label->setStyleSheet(QString::fromUtf8("background-color: rgb(85, 170, 255);\n"
 "border-radius:15px;"));
         scrollArea = new QScrollArea(menu);
         scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
-        scrollArea->setGeometry(QRect(20, 110, 221, 471));
+        scrollArea->setGeometry(QRect(20, 160, 221, 421));
         scrollArea->setStyleSheet(QString::fromUtf8("background-color: rgb(85, 170, 255);\n"
 ""));
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 219, 469));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 219, 419));
         pushButton_3 = new QPushButton(scrollAreaWidgetContents);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
         pushButton_3->setGeometry(QRect(10, 10, 91, 29));
@@ -185,6 +260,44 @@ public:
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/beg/playlist.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_3->setIcon(icon1);
+        groupBox = new QGroupBox(scrollAreaWidgetContents);
+        groupBox->setObjectName(QString::fromUtf8("groupBox"));
+        groupBox->setGeometry(QRect(0, 0, 221, 421));
+        groupBox->setTabletTracking(false);
+        groupBox->setAutoFillBackground(false);
+        groupBox->setStyleSheet(QString::fromUtf8("QGroupBox::title {\n"
+"     color: black;\n"
+"     padding: 5px 10px; \n"
+"     subcontrol-origin: margin;\n"
+"      subcontrol-position: top left;\n"
+"        }"));
+        groupBox->setCheckable(false);
+        pushButton_8 = new QPushButton(groupBox);
+        pushButton_8->setObjectName(QString::fromUtf8("pushButton_8"));
+        pushButton_8->setGeometry(QRect(0, 30, 91, 29));
+        pushButton_8->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"font-size: 15px;\n"
+"border-radius: 10px;\n"
+"background-color: transparent;\n"
+"border: 2px solid transparent;\n"
+"color: black;\n"
+"}"));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/beg/upload.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_8->setIcon(icon2);
+        pushButton_9 = new QPushButton(groupBox);
+        pushButton_9->setObjectName(QString::fromUtf8("pushButton_9"));
+        pushButton_9->setGeometry(QRect(0, 70, 141, 21));
+        pushButton_9->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"font-size: 15px;\n"
+"border-radius: 10px;\n"
+"background-color: transparent;\n"
+"border: 2px solid transparent;\n"
+"color: black;\n"
+"}"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/beg/user (1).png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_9->setIcon(icon3);
         scrollArea->setWidget(scrollAreaWidgetContents);
         pushButton = new QPushButton(menu);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
@@ -196,9 +309,9 @@ public:
 "border: 2px solid transparent;\n"
 "color: black;\n"
 "}"));
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/beg/home.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton->setIcon(icon2);
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/beg/home.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton->setIcon(icon4);
         pushButton->setCheckable(true);
         pushButton_2 = new QPushButton(menu);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
@@ -227,10 +340,10 @@ public:
 "border: 2px solid transparent;\n"
 "color: black;\n"
 "}"));
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/beg/play.png"), QSize(), QIcon::Normal, QIcon::Off);
-        icon3.addFile(QString::fromUtf8(":/beg/pause.png"), QSize(), QIcon::Normal, QIcon::On);
-        playStop->setIcon(icon3);
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/beg/play.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon5.addFile(QString::fromUtf8(":/beg/pause.png"), QSize(), QIcon::Normal, QIcon::On);
+        playStop->setIcon(icon5);
         playStop->setIconSize(QSize(30, 30));
         playStop->setCheckable(true);
         playStop->setChecked(false);
@@ -245,9 +358,9 @@ public:
 "border: 2px solid transparent;\n"
 "color: black;\n"
 "}"));
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/beg/next.png"), QSize(), QIcon::Normal, QIcon::Off);
-        next->setIcon(icon4);
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/beg/next.png"), QSize(), QIcon::Normal, QIcon::Off);
+        next->setIcon(icon6);
         next->setIconSize(QSize(20, 20));
         back = new QPushButton(MusicPlayer);
         back->setObjectName(QString::fromUtf8("back"));
@@ -259,9 +372,9 @@ public:
 "border: 2px solid transparent;\n"
 "color: black;\n"
 "}"));
-        QIcon icon5;
-        icon5.addFile(QString::fromUtf8(":/beg/back.png"), QSize(), QIcon::Normal, QIcon::Off);
-        back->setIcon(icon5);
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8(":/beg/back.png"), QSize(), QIcon::Normal, QIcon::Off);
+        back->setIcon(icon7);
         back->setIconSize(QSize(20, 20));
         horizontalSlider = new QSlider(MusicPlayer);
         horizontalSlider->setObjectName(QString::fromUtf8("horizontalSlider"));
@@ -323,20 +436,34 @@ public:
 "border: 2px solid transparent;\n"
 "color: black;\n"
 "}"));
-        QIcon icon6;
-        icon6.addFile(QString::fromUtf8(":/beg/volume.png"), QSize(), QIcon::Normal, QIcon::Off);
-        icon6.addFile(QString::fromUtf8(":/beg/mute.png"), QSize(), QIcon::Normal, QIcon::On);
-        mute->setIcon(icon6);
+        QIcon icon8;
+        icon8.addFile(QString::fromUtf8(":/beg/volume.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon8.addFile(QString::fromUtf8(":/beg/mute.png"), QSize(), QIcon::Normal, QIcon::On);
+        mute->setIcon(icon8);
         mute->setIconSize(QSize(20, 20));
         mute->setCheckable(true);
         mute->setChecked(false);
         mute->setAutoRepeat(false);
+        pushButton_17 = new QPushButton(menu);
+        pushButton_17->setObjectName(QString::fromUtf8("pushButton_17"));
+        pushButton_17->setGeometry(QRect(30, 110, 101, 29));
+        pushButton_17->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"font-size: 15px;\n"
+"border-radius: 10px;\n"
+"background-color: transparent;\n"
+"border: 2px solid transparent;\n"
+"color: black;\n"
+"}"));
+        QIcon icon9;
+        icon9.addFile(QString::fromUtf8(":/beg/user-profile.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_17->setIcon(icon9);
+        stackedWidget->raise();
         MusicPlayer->raise();
         scrollArea->raise();
         label->raise();
-        stackedWidget->raise();
         pushButton->raise();
         pushButton_2->raise();
+        pushButton_17->raise();
 
         retranslateUi(menu);
 
@@ -352,16 +479,26 @@ public:
         pushButton_4->setText(QCoreApplication::translate("menu", "All", nullptr));
         pushButton_5->setText(QCoreApplication::translate("menu", "Music", nullptr));
         pushButton_6->setText(QCoreApplication::translate("menu", "Podcast", nullptr));
+        pushButton_7->setText(QCoreApplication::translate("menu", "All", nullptr));
+        pushButton_12->setText(QCoreApplication::translate("menu", "Music", nullptr));
+        pushButton_13->setText(QCoreApplication::translate("menu", "Podcast", nullptr));
+        pushButton_14->setText(QCoreApplication::translate("menu", "All", nullptr));
+        pushButton_15->setText(QCoreApplication::translate("menu", "Music", nullptr));
+        pushButton_16->setText(QCoreApplication::translate("menu", "Podcast", nullptr));
         searchBar->setText(QString());
         label_2->setText(QString());
         label->setText(QString());
         pushButton_3->setText(QCoreApplication::translate("menu", "  Library", nullptr));
+        groupBox->setTitle(QCoreApplication::translate("menu", "Settings", nullptr));
+        pushButton_8->setText(QCoreApplication::translate("menu", "  Upload", nullptr));
+        pushButton_9->setText(QCoreApplication::translate("menu", "   Delete account", nullptr));
         pushButton->setText(QCoreApplication::translate("menu", "    Home", nullptr));
         pushButton_2->setText(QCoreApplication::translate("menu", "    Search", nullptr));
         playStop->setText(QString());
         next->setText(QString());
         back->setText(QString());
         mute->setText(QString());
+        pushButton_17->setText(QCoreApplication::translate("menu", "    Settings", nullptr));
     } // retranslateUi
 
 };

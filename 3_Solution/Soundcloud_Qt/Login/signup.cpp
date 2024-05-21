@@ -11,6 +11,8 @@ Signup::Signup(QWidget *parent)
     ui->setupUi(this);
     connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(on_pushButton_2_clicked()));
     connect(ui->SignUpButton, SIGNAL(clicked()), this, SLOT(on_SignUpButton_clicked()));
+    ui->lineEdit->setPlaceholderText("Ex:ursu112@email.com");
+    ui->lineEdit_2->setPlaceholderText("Ex:ursu112");
 }
 
 Signup::~Signup()
@@ -52,8 +54,8 @@ void Signup::on_SignUpButton_clicked()
 
     if(req._request()){
         TCPClient::setUsername(username);
-        QMessageBox::information(this,"SignIn","Congratulation! Enjoy your search!");
-        this->hide();
+        QMessageBox::information(this,"SignIn","Congratulation! Enjoy the music!");
+        this->close();
 
         menu Menu(nullptr);
         Menu.setModal(true);

@@ -15,7 +15,6 @@ bool normaluser::sendCredentials()
     credentials.append(username);
     credentials.append(diez);
     credentials.append(password);
-    credentials.append(diez);
     //request catre server
     requestLogin req(credentials);
     return req._request();
