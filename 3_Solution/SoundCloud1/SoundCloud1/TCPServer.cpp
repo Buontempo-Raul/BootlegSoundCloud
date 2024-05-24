@@ -37,7 +37,7 @@
 // search song in local = 5					5 # UserName # searchQuery			
 // print songs from local = 6				6 # UserName
 // get path from song = 7					7 # UserName # SongName
-// 
+// add song to liked = 8					8 # SongName # Url # UserName
 // 
 ///			CODES FOR INSTRUCTIONS
 
@@ -282,6 +282,13 @@ void TCPServer::searchSong(int clientSocket, std::vector<std::string> data)
 	// Output the formatted result for debugging
 	std::cout << formattedResult << std::endl;
 	send(clientSocket, formattedResult.c_str(), formattedResult.size(), 0);
+}
+
+void TCPServer::likedSongs(int clientSocket, std::vector<std::string> data)
+{
+	DataBase::getInstance().likedSong(data);
+	send(clientSocket,"true",4,0);
+
 }
 
 void TCPServer::deleteUser(int clientSocket, std::vector<std::string> data)
