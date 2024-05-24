@@ -288,7 +288,6 @@ void TCPServer::likedSongs(int clientSocket, std::vector<std::string> data)
 {
 	DataBase::getInstance().likedSong(data);
 	send(clientSocket,"true",4,0);
-
 }
 
 void TCPServer::deleteUser(int clientSocket, std::vector<std::string> data)
