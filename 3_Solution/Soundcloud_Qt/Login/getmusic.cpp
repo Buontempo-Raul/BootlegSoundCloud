@@ -14,12 +14,11 @@ void getmusic::splitMessageSong(QString serverMessage)
     const int songDataFields = 3;
     int totalParts = parts.size();
 
-    // Clear existing data
+
     SongName.clear();
     Url.clear();
     Thumbnails.clear();
 
-    // Iterate over the parts and extract song data
     for (int i = 0; i + songDataFields - 1 < totalParts; i += songDataFields) {
         SongName.push_back(parts[i]);
         Url.push_back(parts[i + 1]);

@@ -27,10 +27,6 @@ public:
     void splitMessageSong(QString serverMessage);
     ~getmusic();
 
-// private:
-//     QStringList searchQuery;
-//     QString response;
-//     QStringList results;  // Lista pentru a stoca rezultatele
 };
 
 #endif // GETMUSIC_H

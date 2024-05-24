@@ -113,7 +113,7 @@ public:
 "background-color: transparent;\n"
 "border: 2px solid black\n"
 "}"));
-        lineEdit_3->setEchoMode(QLineEdit::PasswordEchoOnEdit);
+        lineEdit_3->setEchoMode(QLineEdit::Password);
         lineEdit_4 = new QLineEdit(Signup);
         lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
         lineEdit_4->setGeometry(QRect(500, 440, 301, 28));
@@ -123,7 +123,7 @@ public:
 "background-color: transparent;\n"
 "border: 2px solid black\n"
 "}"));
-        lineEdit_4->setEchoMode(QLineEdit::PasswordEchoOnEdit);
+        lineEdit_4->setEchoMode(QLineEdit::Password);
         SignUpButton = new QPushButton(Signup);
         SignUpButton->setObjectName(QString::fromUtf8("SignUpButton"));
         SignUpButton->setGeometry(QRect(510, 490, 83, 29));
@@ -138,6 +138,7 @@ public:
 "    background-color:green;\n"
 "border-color:green\n"
 "}"));
+        SignUpButton->setAutoRepeat(true);
         pushButton_2 = new QPushButton(Signup);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
         pushButton_2->setGeometry(QRect(630, 490, 83, 29));

@@ -12,7 +12,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-   // connect(ui->pushButton, SIGNAL(clicked()),this,SLOT(button()));
     connect(ui->SignUp, SIGNAL(linkActivated(QString)), this, SLOT(openSignUpWindow()));
     ui->lineEdit->setPlaceholderText("Ex:ursu112");
 }
@@ -25,7 +24,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::openSignUpWindow()
 {
-    Signup *signup = new Signup(this); // Setează fereastra MainWindow ca părinte pentru fereastra SignUp
+    this->close();
+    Signup *signup = new Signup(this);
     signup->setModal(true);
     signup->show();
 }

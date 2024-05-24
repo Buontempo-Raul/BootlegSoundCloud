@@ -10,9 +10,9 @@ Signup::Signup(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(on_pushButton_2_clicked()));
-    connect(ui->SignUpButton, SIGNAL(clicked()), this, SLOT(on_SignUpButton_clicked()));
-    ui->lineEdit->setPlaceholderText("Ex:ursu112@email.com");
-    ui->lineEdit_2->setPlaceholderText("Ex:ursu112");
+
+    ui->lineEdit->setPlaceholderText("Ex:nume@email.com");
+    ui->lineEdit_2->setPlaceholderText("Ex:username");
 }
 
 Signup::~Signup()
@@ -22,14 +22,14 @@ Signup::~Signup()
 
 void Signup::on_pushButton_2_clicked()
 {
-    this->hide(); // Ascunde fereastra SignUp
+    this->close();
 
-    // Afișează fereastra MainWindow dacă este disponibilă
+
     QWidget *mainWindow = this->parentWidget();
     if (mainWindow) {
-        mainWindow->show(); // Afișează fereastra MainWindow
+        mainWindow->show();
     } else {
-        // În cazul în care fereastra MainWindow nu este disponibilă, puteți crea una
+
         MainWindow *main = new MainWindow();
         main->show();
     }
@@ -43,20 +43,21 @@ void Signup::on_SignUpButton_clicked()
     QString password = ui->lineEdit_3->text();
     QString confirmPassword = ui->lineEdit_4->text();
 
-    // Verificați dacă parola și confirmarea parolei sunt identice
+
     if (password != confirmPassword) {
         QMessageBox::warning(this, "Eroare", "Parola și confirmarea parolei nu corespund.");
-        return; // Opriți înregistrarea dacă parolele nu corespund
+        return;
     }
 
 
-    requestSignup req(username,password,email); //seteaza datele de conectare
+    requestSignup req(username,password,email);
 
     if(req._request()){
         TCPClient::setUsername(username);
         QMessageBox::information(this,"SignIn","Congratulation! Enjoy the music!");
         this->close();
-
+        QWidget *mainWindow = this->parentWidget();
+        mainWindow->close();
         menu Menu(nullptr);
         Menu.setModal(true);
         Menu.show();

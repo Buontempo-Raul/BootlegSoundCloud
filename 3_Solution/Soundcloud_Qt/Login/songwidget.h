@@ -12,7 +12,7 @@ class SongWidget : public QWidget {
     Q_OBJECT
 
 public:
-    SongWidget(const QString &name, const QString &thumbnail, const QString &url, QWidget *parent = nullptr);
+    SongWidget(const QString &name, const QString &url, QWidget *parent = nullptr);
 
 signals:
     void clicked(const QString &url);
