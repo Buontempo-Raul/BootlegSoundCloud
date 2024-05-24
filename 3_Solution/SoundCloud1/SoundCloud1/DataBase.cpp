@@ -1,5 +1,12 @@
 #include"DataBase.h"
 
+#include "nanodbc/nanodbc.h"
+
+#include <sstream>
+#include <chrono>
+#include <ctime>
+#include <iomanip>
+
 DataBase* DataBase::m_instance = nullptr;
 
 DataBase::DataBase() {}
@@ -10,71 +17,245 @@ DataBase::~DataBase() {
 
 
 
-bool DataBase::connect()
+bool DataBase::verifyLogin(std::vector<std::string> data)
 {
-    // Allocate environment handle
-    if (SQLAllocHandle(SQL_HANDLE_ENV, SQL_NULL_HANDLE, &sqlEnvHandle) != SQL_SUCCESS)
+    nanodbc::connection conn(NANODBC_TEXT("DRIVER={SQL SERVER};SERVER=localhost, 51222;DATABASE=Soundcloud_Database;Trusted_Connection=Yes;"));
+    if (conn.connected() != 1)
     {
-        cerr << "Error allocating environment handle" << endl;
+        printf("Error connecting to DataBase\n");
         return false;
     }
 
-    // Set the ODBC version environment attribute
-    if (SQLSetEnvAttr(sqlEnvHandle, SQL_ATTR_ODBC_VERSION, (SQLPOINTER)SQL_OV_ODBC3, 0) != SQL_SUCCESS)
+    std::string sql_query = "SELECT UserName, Password FROM Users";
+
+    nanodbc::result results = nanodbc::execute(conn, sql_query);
+
+    // Fetch and print the results
+    while (results.next())
     {
-        cerr << "Error setting the ODBC version environment attribute" << endl;
-        SQLFreeHandle(SQL_HANDLE_ENV, sqlEnvHandle);
-        return false;
+        std::string username = results.get<std::string>(0);
+        std::string password = results.get<std::string>(1);
+
+        if (data[1] == username && data[2] == password)
+            return true;
     }
 
-    // Allocate connection handle
-    if (SQLAllocHandle(SQL_HANDLE_DBC, sqlEnvHandle, &sqlConnHandle) != SQL_SUCCESS)
-    {
-        cerr << "Error allocating connection handle" << endl;
-        SQLFreeHandle(SQL_HANDLE_ENV, sqlEnvHandle);
-        return false;
-    }
-
-    // Connection string
-
-    ///                                          <CUM SA CONECTEZI BAZA>
-    ///                             
-    ///                              SERVER = localhost, port(se face din setari in SQL)
-    ///                              DATABASE = numele bazei de date
-    ///    Steps for SSMS
-    ///    1.Open the SQL server
-    ///    2.Right click on the Server -> properties -> Security -> Server authentication 
-    ///            -> select the 'SQL Server and Windows Authentication mode' bullet
-    ///    3.Right click on the Server -> restart (DONT CLOSE THE APP, LEAVE IT OPEN, YOU WILL NEED IT LATER)
-    ///    4.Open 'Sql Server Configuration Manager' -> SQL Server Network Configuration 
-    ///            -> Protocols for MSSQLSERVER -> click on 'TCP/IP' -> Enable -> 'Yes'
-    ///            -> IP Addresses -> scroll to the bottom -> on 'TCP Dynamic Ports' write 0 -> 'Apply'
-    ///            -> go back to the SQL Server and restart it once more -> go again to the 'TCP Dynamic Ports' 
-    ///            -> now where you wrote 0 should be the port number
-
-    SQLWCHAR connectionStr[] = L"DRIVER={SQL SERVER};SERVER=localhost, 51222;DATABASE=Soundcloud_Database;Trusted_Connection=Yes;";
-    // Connect to SQL Server
-    std::cout << "waiting..\n";
-
-    switch (SQLDriverConnect(sqlConnHandle, NULL, connectionStr, SQL_NTS, retconstring, SQL_RETURN_CODE_LEN, NULL, SQL_DRIVER_NOPROMPT))
-    {
-    case SQL_SUCCESS_WITH_INFO:
-        break;
-    case SQL_INVALID_HANDLE:
-        return false;
-        break;
-    case SQL_ERROR:
-        SQLFreeHandle(SQL_HANDLE_DBC, sqlConnHandle);
-        SQLFreeHandle(SQL_HANDLE_ENV, sqlEnvHandle);
-        return false;
-    default:
-        break;
-    }
-    std::cout << "Done waiting..\n";
-
-
+    return false;
 }
 
+bool DataBase::registerUser(std::vector<std::string> data)
+{
+    if (!validMail(data[2]) && !validPassword(data[3]) && !validUserName(data[1]))
+        return false;
+
+    nanodbc::connection conn(NANODBC_TEXT("DRIVER={SQL SERVER};SERVER=localhost, 51222;DATABASE=Soundcloud_Database;Trusted_Connection=Yes;"));
+    if (conn.connected() != 1)
+    {
+        printf("Error connecting to DataBase\n");
+        return false;
+    }
+
+    std::string sql_query = "INSERT INTO Users (UserName, UserMail, Password) VALUES ('" + data[1] + "','" + data[2] + "','" + data[3] + "')";
+
+    nanodbc::result results = nanodbc::execute(conn, sql_query);
+
+    return true;
+}
+
+bool DataBase::deleteUser(std::vector<std::string> data)
+{
+    nanodbc::connection conn(NANODBC_TEXT("DRIVER={SQL SERVER};SERVER=localhost, 51222;DATABASE=Soundcloud_Database;Trusted_Connection=Yes;"));
+    if (conn.connected() != 1)
+    {
+        printf("Error connecting to DataBase\n");
+        return false;
+    }
+
+    std::string sql_query = "DELETE FROM Users WHERE UserMail='" + data[1] + "' AND Password='" + data[2] + "'";
+
+    if (verifyLogin(data))
+        nanodbc::result resutls = nanodbc::execute(conn, sql_query);
+    else
+        return false;
+
+    return true;
+}
+
+void DataBase::addSong(std::vector<std::string> data)
+{
+    nanodbc::connection conn(NANODBC_TEXT("DRIVER={SQL SERVER};SERVER=localhost, 51222;DATABASE=Soundcloud_Database;Trusted_Connection=Yes;"));
+    if (conn.connected() != 1)
+    {
+        printf("Error connecting to DataBase\n");
+        return;
+    }
+
+    auto now = std::chrono::system_clock::now();
+
+    // Convert system time to time_t (C-style time)
+    std::time_t now_time_t = std::chrono::system_clock::to_time_t(now);
+
+    // Convert time_t to struct tm (broken down time)
+    std::tm* now_tm = std::localtime(&now_time_t);
+
+    // Format the date as "YYYY-MM-DD"
+    std::stringstream ss;
+    ss << std::put_time(now_tm, "%Y-%m-%d");
+
+    std::string currentDate = ss.str();
+
+    std::string sql_query = "INSERT INTO Songs (SongName, UserName, PostDate, filePath) VALUES ('" + data[1] + "','" + data[2] + "','" + currentDate + "','" + data[3] + "')";
+
+    nanodbc::result results = nanodbc::execute(conn, sql_query);
+}
+
+std::string DataBase::searchSong(std::vector<std::string> data)
+{
+    nanodbc::connection conn(NANODBC_TEXT("DRIVER={SQL SERVER};SERVER=localhost, 51222;DATABASE=Soundcloud_Database;Trusted_Connection=Yes;"));
+    if (conn.connected() != 1)
+    {
+        printf("Error connecting to DataBase\n");
+        return "false";
+    }
+
+    std::string sql_query = "SELECT SongName FROM Songs WHERE UserName = '" + data[1] + "' AND SongName = '%" + data[2] + "%';";
+ 
+    nanodbc::result result = nanodbc::execute(conn, sql_query);
+
+    std::string formattedResult;
+
+    while (result.next())
+    {
+        std::string song_name = result.get<std::string>(0);
+        formattedResult += song_name;
+        formattedResult += "#";
+    }
+
+    if (formattedResult.empty())
+        formattedResult = "false";
+    else
+        formattedResult.pop_back();
+
+    return formattedResult;
+}
+
+std::string DataBase::printSongs(std::vector<std::string> data)
+{
+    nanodbc::connection conn(NANODBC_TEXT("DRIVER={SQL SERVER};SERVER=localhost, 51222;DATABASE=Soundcloud_Database;Trusted_Connection=Yes;"));
+    if (conn.connected() != 1)
+    {
+        printf("Error connecting to DataBase\n");
+        return "false";
+    }
+
+    std::string sql_query = "SELECT SongName FROM Songs WHERE UserName = '" + data[1] + "';";
+
+    nanodbc::result result = nanodbc::execute(conn, sql_query);
+
+    std::string formattedResult;
+
+    while (result.next())
+    {
+        std::string song_name = result.get<std::string>(0);
+        formattedResult += song_name;
+        formattedResult += "#";
+    }
+
+    if (formattedResult.empty())
+        formattedResult = "false";
+    else
+        formattedResult.pop_back();
+
+    return formattedResult;
+}
+
+std::string DataBase::getPath(std::vector<std::string> data)
+{
+    nanodbc::connection conn(NANODBC_TEXT("DRIVER={SQL SERVER};SERVER=localhost, 51222;DATABASE=Soundcloud_Database;Trusted_Connection=Yes;"));
+    if (conn.connected() != 1)
+    {
+        printf("Error connecting to DataBase\n");
+        return "false";
+    }
+
+    std::string sql_query = "SELECT filePath FROM Songs WHERE UserName = '" + data[1] + "' AND SongName ='" + data[2] + "';";
+
+    nanodbc::result result = nanodbc::execute(conn, sql_query);
+
+    std::string filePath;
+    if (result.next())
+        filePath = result.get<std::string>(0);
+    else
+        filePath = "false";
+
+    return filePath;
+}
+
+std::string DataBase::getName(std::string mail)
+{
+    nanodbc::connection conn(NANODBC_TEXT("DRIVER={SQL SERVER};SERVER=localhost, 51222;DATABASE=Soundcloud_Database;Trusted_Connection=Yes;"));
+    if (conn.connected() != 1)
+    {
+        printf("Error connecting to DataBase\n");
+        return "false";
+    }
+
+    std::string sql_query = "SELECT UserName FROM Users WHERE UserMail = '" + mail + "';";
+
+    nanodbc::result result = nanodbc::execute(conn, sql_query);
+
+    if (result.next())
+        return result.get<std::string>(0);
+    else
+        return "false";
+}
+
+bool DataBase::validUserName(const std::string& username)
+{
+    nanodbc::connection conn(NANODBC_TEXT("DRIVER={SQL SERVER};SERVER=localhost, 51222;DATABASE=Soundcloud_Database;Trusted_Connection=Yes;"));
+    if (conn.connected() != 1)
+    {
+        printf("Error connecting to DataBase\n");
+        return false;
+    }
+
+    std::string sql_query = "SELECT UserName FROM Users";
+
+    nanodbc::result result = nanodbc::execute(conn, sql_query);
+
+    while (result.next())
+        if (username == result.get<std::string>(0))
+            return false;
+
+    return true;
+}
+
+bool DataBase::validMail(const std::string& mail)
+{
+    const std::regex pattern(R"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)");
+
+    // Use regex_match to check if the email matches the pattern
+    if (std::regex_match(mail, pattern))
+        return true;
+    else return false;
+}
+
+bool DataBase::validPassword(const std::string& password)
+{
+    if (password.length() < 8) {
+        return false;
+    }
+
+    bool hasDigit = false;
+    for (char ch : password) {
+        if (std::isdigit(ch)) {
+            hasDigit = true;
+            break;
+        }
+    }
+
+    return hasDigit;
+}
 
 bool DataBase::executeQuery(const std::wstring& query)
 {

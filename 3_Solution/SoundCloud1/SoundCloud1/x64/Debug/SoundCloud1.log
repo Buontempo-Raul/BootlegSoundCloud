@@ -1,5 +1,6 @@
-﻿  TCPServer.cpp
-C:\Users\condu\Desktop\POOP\SoundCloud1\SoundCloud1\TCPServer.cpp(39,20): warning C4244: 'initializing': conversion from 'SOCKET' to 'int', possible loss of data
-C:\Users\condu\Desktop\POOP\SoundCloud1\SoundCloud1\TCPServer.cpp(65,23): warning C4244: '=': conversion from 'SOCKET' to 'int', possible loss of data
-C:\Users\condu\Desktop\POOP\SoundCloud1\SoundCloud1\TCPServer.cpp(99,20): warning C4244: 'initializing': conversion from 'SOCKET' to 'int', possible loss of data
-  SoundCloud1.vcxproj -> C:\Users\condu\Desktop\POOP\SoundCloud1\x64\Debug\SoundCloud1.exe
+﻿  DataBase.cpp
+  Utilis.cpp
+  Generating Code...
+  SoundCloud1.vcxproj -> D:\C++\SoundCloud-main\3_Solution\SoundCloud1\x64\Debug\SoundCloud1.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.
