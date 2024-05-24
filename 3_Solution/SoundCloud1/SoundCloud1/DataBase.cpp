@@ -169,6 +169,20 @@ std::string DataBase::printSongs(std::vector<std::string> data)
     return formattedResult;
 }
 
+void DataBase::likedSong(std::vector<std::string> data)
+{
+    nanodbc::connection conn(NANODBC_TEXT("DRIVER={SQL SERVER};SERVER=localhost, 51222;DATABASE=Soundcloud_Database;Trusted_Connection=Yes;"));
+    if (conn.connected() != 1)
+    {
+        printf("Error connecting to DataBase\n");
+        return "false";
+    }
+
+    std::string sql_query = "INSERT INTO LikedSongs (SongName, SongUrl, UserName) VALUES ('" + data[1] + "','" + data[2] + "','" + data[3] + "');";
+
+    nanodbc::result result = nanodbc::execute(conn, sql_query);
+}
+
 std::string DataBase::getPath(std::vector<std::string> data)
 {
     nanodbc::connection conn(NANODBC_TEXT("DRIVER={SQL SERVER};SERVER=localhost, 51222;DATABASE=Soundcloud_Database;Trusted_Connection=Yes;"));
