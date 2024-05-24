@@ -7,6 +7,8 @@
 #include <sqltypes.h>
 #include <sqlext.h>
 #include <vector>
+#include <regex>
+#include <string>
 
 using namespace std;
 
@@ -24,7 +26,20 @@ public:
 		return *m_instance;
 	}
 
-	bool connect();
+	bool verifyLogin(std::vector<std::string> data);
+	bool registerUser(std::vector<std::string> data);
+	bool deleteUser(std::vector<std::string> data);
+	void addSong(std::vector<std::string> data);
+	std::string searchSong(std::vector<std::string> data);
+	std::string printSongs(std::vector<std::string> data);
+	std::string getPath(std::vector<std::string> data);
+	
+	std::string getName(std::string mail);
+
+	bool validUserName(const std::string& username);
+	bool validMail(const std::string& mail);
+	bool validPassword(const std::string& password);
+
 	void disconnect();
 	bool executeQuery(const wstring& query);
 	std::vector<std::wstring> selectQuery(const std::wstring& query);
@@ -34,6 +49,7 @@ public:
 	SQLHANDLE getEnv() { return sqlEnvHandle; }
 private:
 
+	//SQLHDBC sqlConnHandle;
 
 	DataBase();
 	~DataBase();
