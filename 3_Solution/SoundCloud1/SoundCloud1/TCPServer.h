@@ -35,5 +35,5 @@ private:
 	void searchLocalSongs(int clientSocket, std::vector<std::string> data);
 	void printLocalSongs(int clientSocket, std::vector<std::string> data);
 	void getPathForSong(int clientSocket, std::vector<std::string> data);
-
+	void likedSongs(int clientSocket, std::vector<std::string> data);
 };
