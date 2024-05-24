@@ -33,7 +33,8 @@ public:
 	std::string searchSong(std::vector<std::string> data);
 	std::string printSongs(std::vector<std::string> data);
 	std::string getPath(std::vector<std::string> data);
-	
+	void likedSong(std::vector<std::string> data);
+
 	std::string getName(std::string mail);
 
 	bool validUserName(const std::string& username);
